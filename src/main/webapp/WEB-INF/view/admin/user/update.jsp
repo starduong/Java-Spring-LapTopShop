@@ -18,18 +18,6 @@
 
                 <!-- Latest compiled JavaScript -->
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-                <script>
-                    $(document).ready(() => {
-                        const avatarFile = $("#avatarFile");
-                        avatarFile.change(function (e) {
-                            const imgURL = URL.createObjectURL(e.target.files[0]);
-                            $("#avatarPreview").attr("src", imgURL);
-                            $("#avatarPreview").css({ "display": "block" });
-                        });
-                    });
-                </script>
             </head>
 
             <body class="sb-nav-fixed">
@@ -44,61 +32,45 @@
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Users</li>
                                 </ol>
-                                <div class="container mt-5">
+                                <div class="mt-5">
                                     <div class="row">
                                         <div class="col-md-6 col-12 mx-auto">
-                                            <h3>Create a user</h3>
+                                            <h3>Update a user</h3>
                                             <hr />
-                                            <form:form action="/admin/user/create" method="post" modelAttribute="user"
-                                                class="row" enctype="multipart/form-data">
-                                                <div class="mb-3 col-12 col-md-6">
+                                            <form:form action="/admin/user/update" method="post" modelAttribute="user">
+                                                <div class="mb-3" style="display: none;">
+                                                    <form:label class="form-label" path="id">Id:</form:label>
+                                                    <form:input type="text" class="form-control" path="id" />
+                                                </div>
+                                                <div class="mb-3">
                                                     <form:label class="form-label" path="email">Email:</form:label>
-                                                    <form:input type="email" class="form-control" path="email" />
+                                                    <form:input type="email" class="form-control" path="email"
+                                                        disabled="true" />
                                                 </div>
-                                                <div class="mb-3 col-12 col-md-6">
-                                                    <form:label class="form-label" path="password">Password:
-                                                    </form:label>
-                                                    <form:input type="password" class="form-control" path="password" />
-                                                </div>
-                                                <div class="mb-3 col-12 col-md-6">
+
+                                                <div class="mb-3">
                                                     <form:label class="form-label" path="phone">Phone number:
                                                     </form:label>
                                                     <form:input type="text" class="form-control" path="phone" />
                                                 </div>
-                                                <div class="mb-3 col-12 col-md-6">
+                                                <div class="mb-3">
                                                     <form:label class="form-label" path="fullName">Full Name:
                                                     </form:label>
                                                     <form:input type="text" class="form-control" path="fullName" />
                                                 </div>
-                                                <div class="mb-3 col-12">
+                                                <div class="mb-3">
                                                     <form:label class="form-label" path="address">Address:</form:label>
                                                     <form:input type="text" class="form-control" path="address" />
                                                 </div>
-                                                <div class="mb-3 col-12 col-md-6">
-                                                    <label class="form-label">Role:</label>
-                                                    <form:select class="form-select" path="role.name">
-                                                        <form:option value="ADMIN">ADMIN</form:option>
-                                                        <form:option value="USER">USER</form:option>
-                                                    </form:select>
-                                                </div>
-                                                <div class="mb-3 col-12 col-md-6">
-                                                    <label for="avatarFile" class="form-label">Avatar:</label>
-                                                    <input class="form-control" type="file" id="avatarFile" name="file"
-                                                        accept=".png, .jpg, .jpeg" />
-                                                </div>
-                                                <div class="mb-3 col-12">
-                                                    <img style="max-height: 250px; display: none;" alt="avatar preview"
-                                                        id="avatarPreview" />
-                                                </div>
-                                                <div class="mb-5 col-12">
-                                                    <button type="submit" class="btn btn-primary">Create</button>
-                                                </div>
+
+                                                <button type="submit" class="btn btn-primary">Update</button>
                                             </form:form>
                                         </div>
 
                                     </div>
 
                                 </div>
+
 
                             </div>
 
